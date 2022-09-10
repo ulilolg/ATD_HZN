@@ -1,0 +1,10 @@
+@charset "utf-8";
+//// コモンスタイル
+@use "./_common/reset";
+@use "./_common/base";
+@use "./_common/component";
+
+//// レイアウトスタイル
+@use "./_layout/header";
+@use "./_layout/footer";
+@use "./_layout/main";

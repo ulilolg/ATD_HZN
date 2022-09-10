@@ -1,0 +1,74 @@
+@use "../_global/import" as global;
+//// フッタースタイル
+.footer {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  @include global.media_queries(pc) {
+    height: 80px;
+  }
+  @include global.media_queries(tab) {
+    height: 70px;
+  }
+  &__inner {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .sns-icons {
+    display: flex;
+    @include global.media_queries(pc) {
+      margin-bottom: 10px;
+    }
+    @include global.media_queries(tab) {
+      margin-bottom: 10px;
+    }
+    &__item {
+      &:not(:first-child) {
+        @include global.media_queries(pc) {
+          margin-left: 25px;
+        }
+        @include global.media_queries(tab) {
+          margin-left: 18px;
+        }
+      }
+      i {
+        color: global.$color_white;
+        @include global.media_queries(pc) {
+          @include global.font_size(20);
+        }
+        @include global.media_queries(tab) {
+          @include global.font_size(16);
+        }
+        transition: 0.3s;
+        transform: scale(1);
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      .fa-twitter {
+        &:hover {
+          color: #00acee;
+        }
+      }
+      .fa-instagram {
+        &:hover {
+          color: #f26939;
+        }
+      }
+      .fa-youtube {
+        &:hover {
+          color: #c4302b;
+        }
+      }
+    }
+  }
+  &__copy {
+    display: block;
+    color: global.$color_white;
+    @include global.font_size(10);
+    letter-spacing: 3px;
+  }
+}

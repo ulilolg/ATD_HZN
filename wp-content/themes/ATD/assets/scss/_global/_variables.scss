@@ -1,0 +1,20 @@
+//// フォント
+$font_default: "Noto Serif JP", serif;
+//// コンテンツサイズ
+$content_width_outer: 1000px;
+$content_width_inner: 800px;
+//// 色
+$color_white: #fff;
+$color_black: #000;
+$color_font: #666;
+//// ブレイクポイント
+$bp_s_sp_max: 374px;
+$bp_sp_max: 480px;
+$bp_tab_max: 1024px;
+$bp_pc_min: 1025px;
+$breakpoints: (
+  "s_sp": "screen and (max-width: #{$bp_s_sp_max})",
+  "sp": "screen and (max-width: #{$bp_sp_max})",
+  "tab": "screen and (max-width: #{$bp_tab_max})",
+  "pc": "screen and (min-width: #{$bp_pc_min})",
+) !default;

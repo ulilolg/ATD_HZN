@@ -1,0 +1,39 @@
+@use "./variables" as var;
+@use "sass:map";
+//// フォント
+@mixin font_size($size: 14) {
+  font-size: $size + px;
+}
+//// ブレイクポイント
+@mixin media_queries($breakpoint: sp) {
+  @media #{map.get(var.$breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+//// 比率
+@mixin aspect_ratio($width, $height) {
+  overflow: hidden;
+  aspect-ratio: #{$width} / #{$height};
+  img,
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+  @supports not (aspect-ratio: #{$width} / #{$height}) {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    > img,
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+//// ボックスシャドウ
+@mixin box_shadow($size) {
+  box-shadow: 0 0 $size + px gray;
+}

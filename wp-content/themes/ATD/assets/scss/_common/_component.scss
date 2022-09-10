@@ -1,0 +1,716 @@
+@use "../_global/import" as global;
+//// ボックススタイル
+.section-box {
+  border-radius: 5px;
+  background-color: global.$color_white;
+  animation-name: section-box_animation;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  @include global.box_shadow(5);
+  @include global.media_queries(pc) {
+    padding: 30px 30px;
+  }
+  @include global.media_queries(tab) {
+    padding: 30px 30px;
+  }
+  @include global.media_queries() {
+    padding: 20px 20px;
+  }
+  &:not(:first-child) {
+    @include global.media_queries(pc) {
+      margin-top: 50px;
+    }
+    @include global.media_queries(tab) {
+      margin-top: 50px;
+    }
+    @include global.media_queries() {
+      margin-top: 30px;
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  &__content {
+    display: none;
+    @include global.media_queries(pc) {
+      padding-top: 20px;
+    }
+    @include global.media_queries(tab) {
+      padding-top: 20px;
+    }
+    @include global.media_queries() {
+      padding-top: 15px;
+    }
+    &--fix {
+      display: block;
+      padding: 0;
+    }
+    p {
+      color: global.$color_font;
+      @include global.media_queries(pc) {
+        margin-top: 20px;
+      }
+      @include global.media_queries(tab) {
+        margin-top: 20px;
+      }
+      @include global.media_queries() {
+        margin-top: 15px;
+      }
+    }
+    strong {
+      font-weight: 700;
+      color: global.$color_black;
+    }
+    h2 {
+      @include global.media_queries(pc) {
+        @include global.font_size(18);
+        margin: 60px 0 20px;
+      }
+      @include global.media_queries(tab) {
+        @include global.font_size(18);
+        margin: 60px 0 20px;
+      }
+      @include global.media_queries() {
+        @include global.font_size(16);
+        margin: 45px 0 10px;
+      }
+    }
+    h3 {
+      @include global.media_queries(pc) {
+        @include global.font_size(16);
+        margin: 40px 0 20px;
+      }
+      @include global.media_queries(tab) {
+        @include global.font_size(16);
+        margin: 40px 0 20px;
+      }
+      @include global.media_queries() {
+        @include global.font_size(16);
+        margin: 30px 0 10px;
+      }
+    }
+    h4 {
+      @include global.media_queries(pc) {
+        @include global.font_size(14);
+        margin: 20px 0;
+      }
+      @include global.media_queries(tab) {
+        @include global.font_size(14);
+        margin: 20px 0;
+      }
+      @include global.media_queries() {
+        @include global.font_size(14);
+        margin: 20px 0 10px;
+      }
+    }
+    .c- {
+      &link {
+        @include global.media_queries(pc) {
+          margin-top: 20px;
+        }
+        @include global.media_queries(tab) {
+          margin-top: 20px;
+        }
+        @include global.media_queries() {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+  &__title {
+    font-weight: 700;
+    position: relative;
+    max-width: calc(100% - 40px);
+    @include global.media_queries(pc) {
+      @include global.font_size(24);
+    }
+    @include global.media_queries(tab) {
+      @include global.font_size(24);
+    }
+    @include global.media_queries() {
+      @include global.font_size(18);
+    }
+  }
+  &__article-title {
+    @include global.font_size(16);
+    width: 100%;
+    display: block;
+    @include global.media_queries(pc) {
+      margin-top: 20px;
+    }
+    @include global.media_queries(tab) {
+      margin-top: 20px;
+    }
+    @include global.media_queries() {
+      margin-top: 10px;
+    }
+  }
+  &__icon {
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: global.$color_black;
+    border-radius: 5px;
+    cursor: pointer;
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      border-top: 2px solid global.$color_white;
+      transform: translateX(-50%);
+      transition: all 0.5s;
+    }
+    &::before {
+      top: 14px;
+      left: 50%;
+    }
+    &::after {
+      top: 7px;
+      left: 2px;
+      transform: rotate(90deg);
+    }
+  }
+  &__date {
+    display: inline-block;
+    background-color: global.$color_black;
+    border-radius: 5px;
+    color: global.$color_white;
+    padding: 0 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    @include global.font_size(10);
+  }
+}
+@keyframes section-box_animation {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+//// ボックススタイル - CDリリース情報
+.section-box--disc {
+  display: flex;
+  flex-direction: column;
+  @include global.media_queries(pc) {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+  @include global.media_queries(tab) {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+  .section-box__header {
+    order: 2;
+    align-items: flex-start;
+  }
+  .section-box__content {
+    order: 3;
+  }
+  .section-box__icon {
+    margin-top: 4px;
+  }
+  .disc-img {
+    order: 1;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+    @include global.box_shadow(15);
+    @include global.media_queries(pc) {
+      margin-bottom: 25px;
+    }
+    @include global.media_queries(tab) {
+      margin-bottom: 25px;
+    }
+    @include global.media_queries() {
+      margin-bottom: 15px;
+    }
+  }
+}
+//// ボックススタイル - MVリリース情報
+.section-box--video {
+  display: flex;
+  flex-direction: column;
+  .section-box__header {
+    order: 2;
+    align-items: flex-start;
+  }
+  .section-box__content {
+    order: 3;
+  }
+  .section-box__icon {
+    margin-top: 4px;
+  }
+  .video-thumbnail {
+    order: 1;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    @include global.box_shadow(15);
+    @include global.aspect_ratio(16, 9);
+    @include global.media_queries(pc) {
+      margin-bottom: 25px;
+    }
+    @include global.media_queries(tab) {
+      margin-bottom: 25px;
+    }
+    @include global.media_queries() {
+      margin-bottom: 15px;
+    }
+  }
+}
+//// ボックススタイル - ライブ情報
+.section-box--live {
+  .section-box__header {
+    .section-box__article-title {
+      order: 3;
+    }
+    .section-box__date {
+      order: 1;
+    }
+    .section-box__icon {
+      order: 2;
+    }
+  }
+  .section-box__content--fix {
+    @include global.media_queries(pc) {
+      padding-top: 20px;
+    }
+    @include global.media_queries(tab) {
+      padding-top: 20px;
+    }
+    @include global.media_queries() {
+      padding-top: 15px;
+    }
+  }
+  @include global.media_queries(pc) {
+    margin-top: 20px;
+    padding-bottom: 30px;
+  }
+  @include global.media_queries(tab) {
+    margin-top: 20px;
+    padding-bottom: 30px;
+  }
+  @include global.media_queries() {
+    margin-top: 10px;
+    padding-bottom: 20px;
+  }
+  .live-list {
+    margin: 0 0 40px;
+    color: global.$color_font;
+    &-item {
+      position: relative;
+      @include global.media_queries(pc) {
+        padding-left: 80px;
+      }
+      @include global.media_queries(tab) {
+        padding-left: 80px;
+      }
+      @include global.media_queries() {
+        padding-left: 60px;
+      }
+      &:not(:first-child) {
+        @include global.media_queries(pc) {
+          margin-top: 30px;
+        }
+        @include global.media_queries(tab) {
+          margin-top: 30px;
+        }
+        @include global.media_queries() {
+          margin-top: 15px;
+        }
+      }
+      &::before {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-weight: 700;
+        color: global.$color_black;
+      }
+      &--date {
+        &::before {
+          content: "開催日";
+        }
+      }
+      &--place {
+        &::before {
+          content: "会場";
+        }
+      }
+      &--start {
+        &::before {
+          content: "開始";
+        }
+      }
+      &--fee {
+        &::before {
+          content: "料金";
+        }
+      }
+      &--artist {
+        &::before {
+          content: "出演";
+        }
+      }
+      &--other {
+        &::before {
+          content: "備考";
+        }
+      }
+    }
+  }
+  .c-btn-list {
+    &-item {
+      text-align: center;
+    }
+  }
+}
+//// ボックススタイル - お知らせ情報
+.section-box--news {
+  .section-box__header {
+    .section-box__article-title {
+      order: 3;
+    }
+    .section-box__date {
+      order: 1;
+    }
+    .section-box__icon {
+      order: 2;
+    }
+  }
+  .section-box__content {
+    border-top: 2px solid global.$color_black;
+    margin-top: 20px;
+  }
+  .section-box__content--fix {
+    @include global.media_queries(pc) {
+      padding-top: 20px;
+    }
+    @include global.media_queries(tab) {
+      padding-top: 20px;
+    }
+    @include global.media_queries() {
+      padding-top: 15px;
+    }
+  }
+}
+//// ページネーションスタイル
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 0;
+  justify-content: center;
+  margin-top: 50px;
+  &__item {
+    width: 30px;
+    text-align: center;
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
+    a,
+    span {
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-block;
+      text-align: center;
+      background-color: global.$color_white;
+      width: 100%;
+      border-radius: 5px;
+      letter-spacing: 0;
+      padding: 2px 0;
+      border: 1px solid global.$color_white;
+      transition: all 0.5s;
+      &:hover {
+        border: 1px solid global.$color_black;
+      }
+    }
+    &__current {
+      > span {
+        border: 1px solid global.$color_black;
+        color: global.$color_white;
+        background-color: global.$color_black;
+      }
+    }
+  }
+}
+
+
+///// エディターパーツ
+.c- {
+  //// ボタンスタイル
+  &btn {
+    &-wrap {
+      @include global.media_queries(pc) {
+        margin-top: 20px;
+      }
+      @include global.media_queries(tab) {
+        margin-top: 20px;
+      }
+      @include global.media_queries() {
+        margin-top: 15px;
+      }
+    }
+    background-color: global.$color_black;
+    color: global.$color_white;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    padding: 15px 20px;
+    transition: all 0.5s;
+    box-sizing: border-box;
+    border: 2px solid global.$color_black;
+    &:hover {
+      background-color: global.$color_white;
+      color: global.$color_black;
+      border: 2px solid global.$color_black;
+    }
+    @include global.media_queries(pc) {
+      min-width: 300px;
+    }
+    @include global.media_queries(tab) {
+      min-width: 300px;
+    }
+    @include global.media_queries() {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+  //// ボタンリストスタイル
+  &btn-list {
+    @include global.media_queries(pc) {
+      margin-top: 20px;
+    }
+    @include global.media_queries(tab) {
+      margin-top: 20px;
+    }
+    @include global.media_queries() {
+      margin-top: 15px;
+    }
+    &-item {
+      &:not(:first-child) {
+        @include global.media_queries(pc) {
+          margin-top: 20px;
+        }
+        @include global.media_queries(tab) {
+          margin-top: 20px;
+        }
+        @include global.media_queries() {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+  //// リストスタイル
+  &list {
+    border-radius: 5px;
+    border: 2px solid global.$color_black;
+    color: global.$color_font;
+    padding: 20px 20px;
+    @include global.media_queries(pc) {
+      margin-top: 20px;
+    }
+    @include global.media_queries(tab) {
+      margin-top: 20px;
+    }
+    @include global.media_queries() {
+      margin-top: 15px;
+    }
+    &-item {
+      position: relative;
+      padding-left: 23px;
+      &:not(:first-child) {
+        @include global.media_queries(pc) {
+          margin-top: 20px;
+        }
+        @include global.media_queries(tab) {
+          margin-top: 20px;
+        }
+        @include global.media_queries() {
+          margin-top: 10px;
+        }
+      }
+      &::before {
+        font-weight: 700;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        color: global.$color_black;
+      }
+    }
+    &--default {
+      .c-list-item {
+        &::before {
+          content: "■";
+        }
+      }
+    }
+    &--order {
+      counter-reset: number 0;
+      .c-list-item {
+        counter-increment: number 1;
+        &::before {
+          content: counter(number);
+        }
+      }
+    }
+  }
+  //// リンクスタイル
+  &link {
+    position: relative;
+    transition: 0.3s;
+    display: inline-block;
+    font-weight: 700;
+    &--inline {
+      display: inline;
+    }
+    &::after {
+      position: absolute;
+      bottom: 0.3em;
+      left: 0;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: global.$color_black;
+      opacity: 0;
+      transition: 0.3s;
+    }
+    &:hover {
+      &::after {
+        bottom: 0;
+        opacity: 1;
+      }
+    }
+  }
+  //// 参考リンクスタイル
+  &reference {
+    border-radius: 5px;
+    border: 2px solid global.$color_black;
+    padding: 20px 20px;
+    @include global.media_queries(pc) {
+      margin-top: 20px;
+    }
+    @include global.media_queries(tab) {
+      margin-top: 20px;
+    }
+    @include global.media_queries() {
+      margin-top: 15px;
+    }
+    &-list {
+      &-item {
+        margin-top: 10px;
+      }
+    }
+    &-text {
+      color: global.$color_black !important;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    &-link {
+      color: global.$color_font;
+      display: inline-block;
+      text-decoration: underline;
+    }
+  }
+  //// 画像スタイル
+  &img {
+    @include global.box_shadow(8);
+    border-radius: 5px;
+    overflow: hidden;
+    @include global.media_queries(pc) {
+      margin-top: 20px;
+    }
+    @include global.media_queries(tab) {
+      margin-top: 20px;
+    }
+    @include global.media_queries() {
+      margin-top: 15px;
+    }
+    &--half {
+      @include global.media_queries(pc) {
+        width: 50%;
+        margin: 20px auto;
+      }
+      @include global.media_queries(tab) {
+        width: 50%;
+        margin: 20px auto;
+      }
+      @include global.media_queries() {
+        width: 100%;
+        margin: 15px auto;
+      }
+    }
+    + .c-img {
+      @include global.media_queries(pc) {
+        margin-top: 30px;
+      }
+      @include global.media_queries(tab) {
+        margin-top: 30px;
+      }
+      @include global.media_queries() {
+        margin-top: 25px;
+      }
+    }
+  }
+  //// 収録曲スタイル
+  &song-list {
+    border-radius: 5px;
+    border: 2px solid global.$color_black;
+    position: relative;
+    counter-reset: number 0;
+    padding: 20px 20px;
+    @include global.media_queries(pc) {
+      margin-top: 32px;
+    }
+    @include global.media_queries(tab) {
+      margin-top: 32px;
+    }
+    @include global.media_queries() {
+      margin-top: 27px;
+    }
+    &::before {
+      content: "収録曲";
+      position: absolute;
+      top: -13px;
+      background-color: global.$color_white;
+      padding: 0 8px 0 11px;
+      font-weight: 700;
+      left: 39px;
+    }
+    &-item {
+      color: global.$color_font;
+      padding-left: 30px;
+      counter-increment: number 1;
+      position: relative;
+      &:not(:first-child) {
+        margin-top: 10px;
+      }
+      &::before {
+        content: counter(number);
+        position: absolute;
+        left: 0;
+        font-weight: 700;
+        color: global.$color_black;
+      }
+    }
+  }
+}
+
+
+//// JS用スタイル
+.js-section-box__icon--open::after {
+  opacity: 0;
+}

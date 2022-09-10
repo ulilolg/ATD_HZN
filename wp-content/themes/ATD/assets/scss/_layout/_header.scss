@@ -1,0 +1,167 @@
+@use "../_global/import" as global;
+//// ヘッダースタイル
+.header {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  @include global.media_queries(pc) {
+    height: 80px;
+  }
+  @include global.media_queries(tab) {
+    height: 60px;
+  }
+  &__inner {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__logo {
+    @include global.media_queries(pc) {
+      width: 110px;
+    }
+    @include global.media_queries(tab) {
+      width: 90px;
+    }
+    > a {
+      width: 100%;
+      > img {
+        width: 100%;
+      }
+    }
+  }
+  &__hamburger {
+    @include global.media_queries(pc) {
+      display: none;
+    }
+    @include global.media_queries(tab) {
+      display: block;
+      width: 25px;
+      height: 18px;
+      cursor: pointer;
+      position: relative;
+      z-index: 99999;
+    }
+    i {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      transition: all 0.5s;
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      &:nth-child(3) {
+        bottom: 0;
+      }
+    }
+    &.on {
+      i {
+        &:nth-child(1) {
+          transform: translateY(8px) rotate(-45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: translateY(-8px) rotate(45deg);
+        }
+      }
+    }
+  }
+  &__navigation {
+    @include global.media_queries(pc) {
+      display: block;
+    }
+    @include global.media_queries(tab) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 1s;
+    }
+    .navigation {
+      @include global.media_queries(pc) {
+        display: flex;
+      }
+      @include global.media_queries(tab) {
+        width: 100%;
+      }
+      @include global.media_queries() {
+        width: 100%;
+      }
+      &__item {
+        @for $i from 0 through 10 {
+          &:nth-child(#{$i + 1}) {
+            animation-delay: #{0.5 + 0.1 * $i}s;
+          }
+        }
+        @include global.media_queries(pc) {
+          animation-name: navigation;
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          opacity: 0;
+        }
+        @include global.media_queries(tab) {
+          text-align: center;
+        }
+        &:not(:first-child) {
+          @include global.media_queries(pc) {
+            margin-left: 40px;
+          }
+          @include global.media_queries(tab) {
+            margin-top: 40px;
+          }
+        }
+        a {
+          color: global.$color_white;
+          width: 100%;
+          display: inline-block;
+          transition: 0.3s;
+          transform: scale(1);
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+    &.on {
+      @include global.media_queries(tab) {
+        visibility: visible;
+        opacity: 1;
+      }
+      .navigation__item {
+        @include global.media_queries(tab) {
+          animation-name: navigation;
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          opacity: 0;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+@keyframes navigation {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
